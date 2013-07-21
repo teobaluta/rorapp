@@ -1,0 +1,21 @@
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<%= link_to "ror app", '#', id: "logo" %>
+			<% unless current_user.blank? -%>
+					<div> Signed in as <%= current_user.email %></div>
+			<%end -%>
+			<nav>
+				<ul class="nav pull-right">
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "About", 'static_pages/about' %></li>
+<% if current_user.blank? -%>
+					<li><%= link_to "Sign in", new_user_session_path %></li>
+<% else -%>
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+<% end -%>				
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
